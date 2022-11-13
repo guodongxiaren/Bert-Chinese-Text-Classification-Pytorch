@@ -42,7 +42,6 @@ def build_input_data1():
 
 def build_input_data2():
     pad_size = config.pad_size
-    mask = torch.LongTensor([[0]*pad_size]).cuda()
     ids = torch.randint(1, 10, (1, pad_size)).cuda()
     seq_len = torch.randint(1, 10, (1,)).cuda() # , 不能少
     mask = torch.randint(1, 10, (1, pad_size)).cuda()
@@ -50,11 +49,11 @@ def build_input_data2():
 
 
 if __name__ == '__main__':
-    data = build_input_data1()
+    args = build_input_data2()
 
     input_names = ['ids','seq_len', 'mask']
     torch.onnx.export(model, 
-                      (data,),
+                      args,
                       'model.onnx',
                       export_params = True,
                       opset_version=11,
