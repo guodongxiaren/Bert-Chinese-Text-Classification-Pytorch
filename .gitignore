@@ -1,0 +1,6 @@
+*.bin
+*.pt
+*.ckpt
+*.onnx
+*.tar.gz
+__pycache__
