@@ -11,6 +11,8 @@ parser = argparse.ArgumentParser(description='Chinese Text Classification')
 parser.add_argument('--model', type=str, required=True, help='choose a model: Bert, ERNIE')
 args = parser.parse_args()
 
+torch.set_float32_matmul_precision('high')
+
 
 if __name__ == '__main__':
     dataset = 'THUCNews'  # 数据集

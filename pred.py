@@ -19,6 +19,7 @@ model_name = 'bert'
 x = import_module('models.' + model_name)
 config = x.Config('THUCNews')
 model = x.Model(config).to(config.device)
+model = torch.compile(model)
 model.load_state_dict(torch.load(config.save_path, map_location='cpu'))
 
 def build_predict_text_raw(text):
